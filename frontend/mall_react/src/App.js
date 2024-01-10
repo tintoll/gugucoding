@@ -1,7 +1,8 @@
-import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import root from "./router/root";
 
 function App() {
-  return <div className="text-3xl font-bold underline">Hellod World</div>;
+  return <RouterProvider router={root} />;
 }
 
 export default App;
