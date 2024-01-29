@@ -1,5 +1,7 @@
 package com.example.mallapi.service;
 
+import com.example.mallapi.dto.PageRequestDTO;
+import com.example.mallapi.dto.PageResponseDTO;
 import com.example.mallapi.dto.TodoDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -24,5 +26,22 @@ class TodoServiceTests {
                 .build();
         Long tno = todoService.register(todoDTO);
         log.info("TNO: " + tno);
+    }
+
+    @Test
+    public void testGet() {
+        Long tno = 101L;
+        TodoDTO todoDTO = todoService.get(tno);
+        log.info(todoDTO);
+    }
+
+    @Test
+    public void testList() {
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(2)
+                .size(10)
+                .build();
+        PageResponseDTO<TodoDTO> response = todoService.list(pageRequestDTO);
+        log.info(response);
     }
 }
